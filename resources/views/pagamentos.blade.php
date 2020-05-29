@@ -2,10 +2,6 @@
 
 @section('conteudo')
 
-
-//TODO Tabela de ligação clientes - empresas 
-
-
 <div class="container">
     <h1 class="display-4 mt-2">Pagamentos Realizados</h1>
     <table class="table mt-4">
