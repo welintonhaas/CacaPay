@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pagamentos');
-});
-
 Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/pagamentos', 'HomeController@pagamentos')->name('pagamentos')->middleware('auth');
 
-Route::get('/home', 'HomeController@index')->name('home');

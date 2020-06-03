@@ -4,18 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+            <div class="display-4">Bem Vindo!</div>
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                <h2 class="display-1">Sistema de Pagamentos <strong>CaçaPay</strong></h2>
+                @auth
+                <a href="/pagamentos" class="btn btn-success btn-lg btn-block mt-5">Visializar meus Pagamentos</a>
+                @endauth
             </div>
         </div>
     </div>

@@ -22,8 +22,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    //direcionado para pagamentos por Rui. Original estava como /home
-    public const HOME = '/pagamentos';
+    //direcionado para home por Rui e Welinton. Original estava como /home
+    public const HOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, etc.
