@@ -11,7 +11,9 @@
                     </div>
                 @endif
                 <h2 class="display-1">Sistema de Pagamentos <strong>CaçaPay</strong></h2>
-                <a href="/" class="btn btn-success btn-lg btn-block mt-5">Visializar meus Pagamentos</a>
+                @auth
+                <a href="/pagamentos" class="btn btn-success btn-lg btn-block mt-5">Visializar meus Pagamentos</a>
+                @endauth
             </div>
         </div>
     </div>
