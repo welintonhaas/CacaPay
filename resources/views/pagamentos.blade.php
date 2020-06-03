@@ -1,6 +1,6 @@
-@extends('template')
+@extends('layouts.app')
 
-@section('conteudo')
+@section('content')
 
 <div class="container">
     <h1 class="display-4 mt-2">Pagamentos Realizados</h1>
