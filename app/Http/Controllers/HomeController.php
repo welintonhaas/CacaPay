@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
-use App\Cidade;
-use App\Credito;
+use App\Transacoes;
 
 class HomeController extends Controller
 {
@@ -31,7 +29,7 @@ class HomeController extends Controller
 
     public function pagamentos()
     {
-        $cli = Cliente::all();
-        return view('pagamentos', ['clientes'=>$cli]);
+        $tr = Transacoes::all();
+        return view('pagamentos', ['transacoes'=>$tr]);
     }
 }
