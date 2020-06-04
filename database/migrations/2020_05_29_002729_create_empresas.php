@@ -20,7 +20,7 @@ class CreateEmpresas extends Migration
             $table->string('telefone');
             $table->string('email');
             $table->string('token');
-            $table->double('saldo',15,2);
+            $table->double('saldo',15,2)->default(0.0);
             $table->timestamps();
         });
     }
