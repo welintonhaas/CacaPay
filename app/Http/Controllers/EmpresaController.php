@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class EmpresaController extends Controller
 {
     public function cadastro(){
-        return view('cad_cliente');
+        return view('cad_empresa');
     }
 }
