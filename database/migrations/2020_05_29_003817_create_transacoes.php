@@ -22,7 +22,7 @@ class CreateTransacoes extends Migration
             $table->foreign('idEmpresa')->references('id')->on('empresas');
             $table->foreign('idStatus')->references('id')->on('status_transacao');
             $table->foreign('idCliente')->references('id')->on('clientes');
-            $table->timestamps();
+            $table->timestamp('data')->useCurrent();
         });
     }
 

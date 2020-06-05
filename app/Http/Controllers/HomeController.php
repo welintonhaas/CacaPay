@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Transacoes;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -28,8 +30,10 @@ class HomeController extends Controller
     }
 
     public function pagamentos()
-    {
-        $tr = Transacoes::all();
+    {   
+        $idUser = Auth::id();
+        $idCliente = User::find($idUser)->idCliente;
+        $tr = Transacoes::where('idCliente',$idCliente)->get();
         return view('pagamentos', ['transacoes'=>$tr]);
     }
 }
