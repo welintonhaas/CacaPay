@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-  <h1 class="display-4 mt-2">Seus Pagamentos Realizados</h1>
+  <h1 class="display-4 mt-2 text-center">Seus Pagamentos Realizados</h1>
 
   @if (!$transacoes->isEmpty())
   
@@ -27,11 +27,12 @@
               <td>{{ $t->status->nome }}</td>
             </tr>
           @endforeach
+          //TODO Adicionar Saldo
         </tbody>
       </table>
   </div>
   @else
-    <p>Você não possui pagamentos!</p>
+    <p class="text-center ">Você não possui pagamentos!</p>
   @endif
 
 @endsection

@@ -29,8 +29,8 @@ Route::middleware(['auth'])->group(function (){
     });
 
     Route::prefix('cadastrar')->group(function () {
-        Route::get('/empresa', 'EmpresaController@cadastro')->name('cad_empresa')->middleware('auth');
-        Route::get('/credito', 'CreditoController@cadastro')->name('cad_credito')->middleware('auth');
-        Route::get('/status', 'StatusController@cadastro')->name('cad_status')->middleware('auth');
+        Route::post('/empresa', 'EmpresaController@cadastrar')->name('cadastrar_empresa')->middleware('auth');
+        Route::post('/credito', 'CreditoController@cadastrar')->name('cadastrar_credito')->middleware('auth');
+        Route::post('/status', 'StatusController@cadastrar')->name('cadastrar_status')->middleware('auth');
     });
 });
