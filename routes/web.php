@@ -14,14 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/cliente', 'ClienteController@cadastro')->name('cad_cliente');
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/cadastro/cliente', 'ClienteController@cadastro')->name('cad_cliente');
+Route::post('/cadastrar/cliente', 'ClienteController@cadastrar')->name('cadastrar_cliente');
 
 Route::middleware(['auth'])->group(function (){
     
     Route::get('/pagamentos', 'HomeController@pagamentos')->name('pagamentos')->middleware('auth');
 
     Route::prefix('cadastro')->group(function () {
+        Route::get('/empresa', 'EmpresaController@cadastro')->name('cad_empresa')->middleware('auth');
+        Route::get('/credito', 'CreditoController@cadastro')->name('cad_credito')->middleware('auth');
+        Route::get('/status', 'StatusController@cadastro')->name('cad_status')->middleware('auth');
+    });
+
+    Route::prefix('cadastrar')->group(function () {
         Route::get('/empresa', 'EmpresaController@cadastro')->name('cad_empresa')->middleware('auth');
         Route::get('/credito', 'CreditoController@cadastro')->name('cad_credito')->middleware('auth');
         Route::get('/status', 'StatusController@cadastro')->name('cad_status')->middleware('auth');

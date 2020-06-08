@@ -10,7 +10,7 @@
     <table class="table mt-4">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">Conta</th>
             <th scope="col">Valor</th>
             <th scope="col">Empresa</th>
             <th scope="col">Data e Hora</th>
@@ -20,7 +20,7 @@
         <tbody>          
           @foreach($transacoes as $t)
             <tr>
-              <th scope="row">{{ $t->id }}</th>
+              <th scope="row">{{ str_pad($t->conta, 10, "0", STR_PAD_LEFT) }}</th>
               <td>R$ {{ number_format($t->valor,2,',','') }}</td>
               <td>{{ $t->empresa->razaoSocial }}</td>
               <td>{{ date('d/m/Y H:i:s', strtotime($t->data)) }}</td>
