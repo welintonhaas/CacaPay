@@ -32,7 +32,7 @@ class EmpresaController extends Controller
         if ($empresa->save()){
             $msg =  [true, 'msg'=>'Empresa Cadastrada com Sucesso!' ];
         }else{
-            $msg = [false, 'msg'=>'Empresa não foi cadastrado'];
+            $msg = [false, 'msg'=>'Empresa não foi cadastrada'];
         }
 
         return view('home', ['msg'=>$msg]);

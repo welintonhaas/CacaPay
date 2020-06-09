@@ -32,7 +32,7 @@
       </table>
   </div>
   @else
-    <p class="text-center ">Você não possui pagamentos!</p>
+    <p class="text-center">Você não possui pagamentos!</p>
   @endif
 
 @endsection
