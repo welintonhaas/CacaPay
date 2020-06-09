@@ -18,9 +18,7 @@ class CreateClientes extends Migration
             $table->string('nome');
             $table->string('cpf');
             $table->string('telefone');
-            $table->string('email');
-            $table->string('senha');
-            $table->bigInteger('conta');
+            $table->bigInteger('conta')->unique();
             $table->bigInteger('idCidade')->unsigned();
             $table->double('saldo', 15, 2)->nullable()->default(0.00);
             $table->foreign('idCidade')->references('id')->on('cidades');

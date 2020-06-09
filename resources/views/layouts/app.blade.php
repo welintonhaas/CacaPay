@@ -33,6 +33,27 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <i class="fab fa-cc-amazon-pay"></i> {{ config('app.name', 'CaçaPay') }}
                 </a>
+                <ul  class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Cadastrar
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('cad_cliente') }}">Cliente</a>
+                        @Auth
+                          @if(Auth::user()->Admin())
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{ route('cad_empresa') }}">Empresa</a>
+                          <a class="dropdown-item" href="{{ route('cad_credito') }}">Crédito</a>
+                          <a class="dropdown-item" href="{{ route('cad_status') }}">Status de Transação</a>
+                          @endif
+                        @endauth
+                        </div>
+                    </li>
+                    <li>
+                    <a class="nav-link" href="{{ route('pagamentos') }}">Meus Pagamentos</a>
+                    </li>
+                </ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -50,11 +71,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                            
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
