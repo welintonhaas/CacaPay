@@ -30,8 +30,8 @@
                                         <option>{{$e->estado}}</option>
                                     @endforeach
                             </select>
-                          </div>
-                          <div class="form-group col-md-8">
+                        </div>
+                        <div class="form-group col-md-8">
                             <select name="cidade" class="form-control">
                                 <option selected>Selecione sua Cidade</option>
                                 @foreach ($cidade as $c)
