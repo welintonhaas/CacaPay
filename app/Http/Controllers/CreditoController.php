@@ -36,7 +36,7 @@ class CreditoController extends Controller
         $credito->save();
 
         $cliente = Cliente::find($req->cliente);
-        $cliente->saldo = $req->valor;
+        $cliente->saldo += $req->valor;
 
         if ($cliente->save()){
             $msg =  [true, 'msg'=>'Crédito Cadastrado com Sucesso para '.$cliente->nome ];
