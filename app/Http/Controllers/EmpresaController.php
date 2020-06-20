@@ -35,7 +35,7 @@ class EmpresaController extends Controller
 
         // Salva a empresa e retorna para a view home com o status do cadastro
         if ($empresa->save()){
-            $msg =  [true, 'msg'=>'Empresa Cadastrada com Sucesso!' ];
+            $msg =  [true, 'msg'=>'Empresa Cadastrada com Sucesso! Token de acesso: '.$empresa->token  ];
         }else{
             $msg = [false, 'msg'=>'Empresa não foi cadastrada'];
         }

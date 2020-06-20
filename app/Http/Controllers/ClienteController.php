@@ -50,4 +50,25 @@ class ClienteController extends Controller
         return view('home', ['msg'=>$msg]);
         
     }
+
+    public function cadastrarAPI($dados)
+    {
+        // Cria o Objeto Cliente e Salva no Banco
+        $cliente = new Cliente;
+        $cliente->nome = 'Cadastro Automático';
+        $cliente->cpf = $dados['cpf'];
+        $cliente->conta = rand(0,99999999);
+        $cliente->save();
+
+        // Cria o cadastra o usuário no banco com os dados
+        $user = new User;
+        $user->password = isset($dados['senha']) ? Hash::make($dados['senha']) : Hash::make('123456') ;
+        $user->idCliente = $cliente->id;
+        $user->email = isset($dados['email']) ?: 'cliente@cacapay.com';
+        $user->name = isset($dados['nome']) ?: 'Cadastro Automático';
+
+        // Tenta Cadastrar o usuário e retorna para a view home com o status 
+        return $user->save();
+        
+    }
 }
