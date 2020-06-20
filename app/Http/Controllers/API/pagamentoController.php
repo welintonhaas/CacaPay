@@ -36,11 +36,13 @@ class pagamentoController extends Controller
         // "Autenticação"
         $empresa = Empresa::where('token', $dados['token'])->first() ?: abort(401);
 
+        // Chama a controller para caso seja necessário criar um novo Cliente
         $novoCliente = new ClienteController; 
         
         // Obtem o cliente, caso não exista, cadastra!
         $cliente = Cliente::where('cpf', $dados['cpf'])->first() ?: $novoCliente->cadastrarAPI($dados);
 
+        // Retorna o Cliente Solicitado e os dados
         return $cliente;
         
     }
