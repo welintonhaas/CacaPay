@@ -26,4 +26,3 @@ Os seguintes dados são opcionais:
 - email 
 - Caso não for informado email será cadastrado o e-mail: cpf_do_clinte@cacapay.com 
 - Caso não for informada a senha, será cadastrado a senha: 123456
-
