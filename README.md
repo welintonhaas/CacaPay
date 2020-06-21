@@ -7,7 +7,7 @@ Em meio à pandemia de COVID-19, um dos setores que mais provou que é essencial
 
 Endereço para acessar o Sistema do CaçaPay
 
-- [Acessar CaçaPay](http://191.36.50.115/cacapay).
+- [Acessar CaçaPay](http://191.36.50.115/CacaPay).
 
 
 ## Primeiro Passo
@@ -16,7 +16,7 @@ Primeiramente solicite ao desenvolvedores Welinton ou Rui para que seja criado a
 
 ## Como utilizar a API
 
-Para comunicar com a API, utilize o endereço http://191.36.50.115/cacapay/api/pagamentos
+Para comunicar com a API, utilize o endereço http://191.36.50.115/CacaPay/api/pagamentos
 - Utilize o método POST 
 - No corpo da requisição envie os parâmetros "token" e "cpf"
 
