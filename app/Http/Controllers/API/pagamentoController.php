@@ -10,7 +10,7 @@ use App\Cliente;
 
 
 
-class pagamentoController extends Controller
+class PagamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
