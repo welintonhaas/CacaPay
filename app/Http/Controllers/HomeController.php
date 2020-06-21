@@ -10,21 +10,7 @@ use App\Cliente;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    
     public function index()
     {
         return view('home');
@@ -41,10 +27,11 @@ class HomeController extends Controller
         // Obtem os dados do cliente 
         $cliente = Cliente::find($idCliente);
 
-        //Obtem as transações do cliente
+        // Obtem as transações do cliente
         $transacoes = Transacoes::where('idCliente',$idCliente)->get();
 
-        // Retorna para a view os dados 
+        // Retorna para a view pagamento os dados 
         return view('pagamentos', ['transacoes'=>$transacoes, 'cliente'=>$cliente]);
+
     }
 }

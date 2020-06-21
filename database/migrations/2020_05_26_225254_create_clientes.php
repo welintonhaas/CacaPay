@@ -17,11 +17,11 @@ class CreateClientes extends Migration
             $table->id();
             $table->string('nome');
             $table->string('cpf');
-            $table->string('telefone');
+            $table->string('telefone')->nullable();
             $table->bigInteger('conta')->unique();
-            $table->bigInteger('idCidade')->unsigned();
+            $table->bigInteger('idCidade')->unsigned()->nullable();
             $table->double('saldo', 15, 2)->nullable()->default(0.00);
-            $table->foreign('idCidade')->references('id')->on('cidades');
+            $table->foreign('idCidade')->references('id')->on('cidades')->nullable();
             $table->timestamps();
         });
     }
