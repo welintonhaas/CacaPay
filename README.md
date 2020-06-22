@@ -15,7 +15,7 @@ Primeiramente solicite ao desenvolvedores Welinton ou Rui para que seja criado a
 
 ## Como utilizar a API
 
-Para comunicar com a API, utilize o endereço http://191.36.50.115/CacaPay/api/pagamentos
+Para comunicar com a API, utilize o endereço http://191.36.50.115/CacaPay/public/api/pagamentos
 - Utilize o método POST 
 - No corpo da requisição envie os parâmetros "token" e "cpf"
 
