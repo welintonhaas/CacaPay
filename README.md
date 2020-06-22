@@ -6,7 +6,6 @@
 Em meio à pandemia de COVID-19, um dos setores que mais provou que é essencial são os meios de pagamento online. Buscando se tornar um centralizador dos meios de pagamento na cidade de Caçador, surgiu a startup CaçaPay
 
 Endereço para acessar o Sistema do CaçaPay
-
 - [Acessar CaçaPay](http://191.36.50.115/CacaPay).
 
 
