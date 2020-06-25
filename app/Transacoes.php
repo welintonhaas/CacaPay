@@ -9,6 +9,7 @@ use App\StatusTransacao;
 
 class Transacoes extends Model
 {
+    public $timestamps = false;
 
     public function empresa()
     {
