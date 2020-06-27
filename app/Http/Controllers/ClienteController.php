@@ -81,8 +81,8 @@ class ClienteController extends Controller
             abort(406);
         }
 
-        // Retorna o usuário criado 
-        return $user;
+        // Retorna o cliente criado 
+        return $cliente;
         
     }
 }
