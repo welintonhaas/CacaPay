@@ -33,10 +33,10 @@ class PagamentoController extends Controller
         $dados = json_decode($request->getContent(), true);
         
         // "Autenticação"
-        $empresa = Empresa::where('token', $dados['token'])->first() ?: abort(401);
+        $empresa = Empresa::where('token', $dados['token'])->first() ?: abort(403);
    
         // Obtem o valor da transaçãp
-        $valor = isset($dados['valor']) ? $dados['valor'] : abort(401);
+        $valor = isset($dados['valor']) ? $dados['valor'] : abort(402);
         
         // Chama a controller para caso seja necessário criar um novo Cliente
         $novoCliente = new ClienteController; 
@@ -52,7 +52,7 @@ class PagamentoController extends Controller
             $status = 1;
         } 
 
-        // Grava Transação
+        // Dados da Transação
         $trasacao = new Transacoes;
         $trasacao->valor = $valor;
         $trasacao->idEmpresa = $empresa->id;

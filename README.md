@@ -1,7 +1,7 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 
-## Sobre o CaçaPay
+# CaçaPay
 
 Em meio à pandemia de COVID-19, um dos setores que mais provou que é essencial são os meios de pagamento online. Buscando se tornar um centralizador dos meios de pagamento na cidade de Caçador, surgiu a startup CaçaPay
 
@@ -17,13 +17,27 @@ Primeiramente solicite ao desenvolvedores Welinton ou Rui para que seja criado a
 
 Para comunicar com a API, utilize o endereço http://webalunos.cacador.ifsc.edu.br/CacaPay/public/api/pagamentos
 - Utilize o método POST 
-- No corpo da requisição envie os parâmetros "token" e "cpf"
+- No corpo da requisição envie os parâmetros obrigatórios 
+```
+"token"
+"cpf" 
+"valor"
+```
 
 Os seguintes dados são opcionais:
-- nome
-- senha
-- email 
+```
+"nome"
+"senha"
+"email"
+```
 
 - Caso não for informado email será cadastrado o e-mail: cpf_do_clinte@cacapay.com 
 - Caso não for informada a senha, será cadastrado a senha: 123456 
 
+O sistema retornará os seguinte status:
+```
+201 transação realizada com sucesso 
+401 transação negada
+402 Valor inválido ou não informado
+403 Token Inválido ou não informado
+```

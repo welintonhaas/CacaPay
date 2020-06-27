@@ -19,7 +19,7 @@
                 <div class="display-4">Bem Vindo!</div>
                 <h2 class="display-1">Sistema de Pagamentos <strong>CaçaPay</strong></h2>
                 @auth
-                <a href="/pagamentos" class="btn btn-success btn-lg btn-block mt-5">Visualizar meus Pagamentos</a>
+                <a href="{{ route('pagamentos') }}" class="btn btn-success btn-lg btn-block mt-5">Visualizar meus Pagamentos</a>
                 @endauth
             @endif
             </div>
