@@ -24,7 +24,7 @@ Para comunicar com a API, utilize o endereço http://webalunos.cacador.ifsc.edu.
 "valor"
 ```
 
-Os seguintes dados são opcionais:
+Os seguintes parâmetros são opcionais:
 ```
 "nome"
 "senha"
@@ -34,10 +34,16 @@ Os seguintes dados são opcionais:
 - Caso não for informado email será cadastrado o e-mail: cpf_do_clinte@cacapay.com 
 - Caso não for informada a senha, será cadastrado a senha: 123456 
 
-O sistema retornará os seguinte status:
+## Status
+
 ```
 201 transação realizada com sucesso 
 401 transação negada
 402 Valor inválido ou não informado
 403 Token Inválido ou não informado
 ```
+
+## Informações úteis
+
+- O saldo inicial é de R$ 50,00
+- Utilize ponto (.) e não vírgula (,) no valor exemplo: "valor" : "20.00"
