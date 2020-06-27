@@ -20,7 +20,7 @@ Route::post('/cadastrar/cliente', 'ClienteController@cadastrar')->name('cadastra
 
 Route::middleware(['auth'])->group(function (){
     
-    Route::get('/pagamentos', 'HomeController@pagamentos')->name('pagamentos')->middleware('auth');
+    Route::get('/pagaments', 'HomeController@pagamentos')->name('pagamentos')->middleware('auth');
 
     Route::prefix('cadastro')->group(function () {
         Route::get('/empresa', 'EmpresaController@cadastro')->name('cad_empresa')->middleware('auth');
@@ -33,4 +33,7 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/credito', 'CreditoController@cadastrar')->name('cadastrar_credito')->middleware('auth');
         Route::post('/status', 'StatusController@cadastrar')->name('cadastrar_status')->middleware('auth');
     });
+
+    Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
+
 });
