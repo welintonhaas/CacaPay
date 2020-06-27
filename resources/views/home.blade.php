@@ -22,7 +22,7 @@
                 <a href="{{ route('pagamentos') }}" class="btn btn-success btn-lg btn-block mt-5">Visualizar meus Pagamentos</a>
                 @endauth
             @endif
-            </div>
+            </div> 
         </div>
     </div>
 </div>
