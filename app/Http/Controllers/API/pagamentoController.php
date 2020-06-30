@@ -67,8 +67,9 @@ class PagamentoController extends Controller
         
         // Transação Gravada com sucesso
         if ($status == 1){
-            $cliente->saldo = $saldo-$valor;
+            $cliente->saldo -= $valor;
             $cliente->save();
+            $empresa->saldo += $valor;
             abort(201);
 
         // Falha na Transação

@@ -39,7 +39,7 @@ Os seguintes parâmetros são opcionais:
 ```
 201 transação realizada com sucesso 
 401 transação negada
-402 Valor inválido ou não informado
+402 Valor ou CPF inválido ou não informado
 403 Token Inválido ou não informado
 ```
 
