@@ -7,6 +7,7 @@ use App\Cliente;
 use App\Cidade;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ClienteController extends Controller
 {
@@ -27,10 +28,11 @@ class ClienteController extends Controller
         // Cria o Objeto Cliente e Salva no Banco
         $cliente = new Cliente;
         $cliente->nome = $req->input('name');
-        $cliente->cpf = $req->input('cpf');;
+        $cliente->cpf = $req->input('cpf');
         $cliente->telefone = $req->input('telefone');
         $cliente->idCidade = $req->input('cidade');
         $cliente->conta = rand(0,99999999);
+        $cliente->saldo = 2000.00;
         $cliente->save();
 
         // Cria o cadastra o usuário no banco com os dados informados em tela
@@ -56,23 +58,9 @@ class ClienteController extends Controller
         // Cria o Objeto Cliente e Salva no Banco
         $cliente = new Cliente;
         $cliente->nome = isset($dados['nome']) ? $dados['nome']: 'Cadastro Automático';
-        $cliente->cpf = $dados['cpf'];
+        $cliente->cpf =  Str::length($dados['cpf']) == 11 ? $dados['cpf'] : abort(402);
         $cliente->conta = rand(0,99999999);
         $cliente->saldo = 50.00;
-
-        // Cadastra o cliente, caso não consiga retorna erro de conteúdo informado incorreto
-        try{
-            $cliente->save();
-        }catch(Exception $e){
-            abort(406);
-        }
-
-        // Cria o cadastra o usuário no banco com os dados
-        $user = new User;
-        $user->password = isset($dados['senha']) ? Hash::make($dados['senha']) : Hash::make('123456') ;
-        $user->idCliente = $cliente->id;
-        $user->email = isset($dados['email']) ? $dados['email'] : $dados['cpf'].'@cacapay.com';
-        $user->name = isset($dados['nome']) ? $dados['nome'] : 'Cadastro Automático';
 
         // Cadastra o usuário, caso não consiga retorna erro de conteúdo informado incorret
         try {
