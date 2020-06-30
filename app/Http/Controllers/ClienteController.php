@@ -64,7 +64,7 @@ class ClienteController extends Controller
 
         // Cadastra o usuário, caso não consiga retorna erro de conteúdo informado incorret
         try {
-            $user->save();
+            $cliente->save();
         }catch ( Exception $e){
             abort(406);
         }
