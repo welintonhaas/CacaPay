@@ -33,4 +33,6 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/credito', 'CreditoController@cadastrar')->name('cadastrar_credito')->middleware('auth');
         Route::post('/status', 'StatusController@cadastrar')->name('cadastrar_status')->middleware('auth');
     });
+
+Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
 });
