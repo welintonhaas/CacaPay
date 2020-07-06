@@ -3,26 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cliente;
+use App\Empresa;
+use Auth;
 
 class dashboardController extends Controller{
 
-	function index(){    
-}
+	function index(){
 
-	function listaClientes(){
+		if (Auth::user()->Admin()) {
 
-	//ainda falta os dados que irão retornar
-	$lista_clientes 
+			// Obtem os clientes	
+			$clientes = Cliente::selectRaw('created_at as data, count(created_at) as quant')->groupByRaw('DAY(created_at)')->get();
 
-	return view('dashboard', ['lista_clientes' => $lista_clientes ]);
+			// Obtem as empresas
+			$empresas = Empresa::selectRaw('created_at as data, count(created_at) as quant')->groupByRaw('DAY(created_at)')->get();;
 
-}
+			// retorna os dados para view
+			return view('dashboard', ['clientes' => $clientes, 'empresas' => $empresas]);
+		}
 
-	function listaEmpresas(){
-		//ainda falta os dados que irão retornar
-	$lista_empresas
-
-	return view('dashboard', ['lista_empresas' => $lista_empresas ]);
- }
+	}
  
 }

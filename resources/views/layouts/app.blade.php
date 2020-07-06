@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -51,8 +52,15 @@
                         </div>
                     </li>
                     <li>
-                    <a class="nav-link" href="{{ route('pagamentos') }}">Meus Pagamentos</a>
+                        <a class="nav-link" href="{{ route('pagamentos') }}">Meus Pagamentos</a>
                     </li>
+                    @Auth
+                        @if(Auth::user()->Admin())
+                        <li>
+                            <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                        </li>
+                        @endif
+                    @endauth
                 </ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

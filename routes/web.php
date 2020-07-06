@@ -34,6 +34,6 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/status', 'StatusController@cadastrar')->name('cadastrar_status')->middleware('auth');
     });
 
-    Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 });
