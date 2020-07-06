@@ -74,7 +74,12 @@
     <div class="col-md-6" id="graficoClientes"></div>
       
     <div class="col-md-6" id="graficoEmpresas"></div>
-
+    <div>
+    @foreach($todosClientes as $regCliente)
+    {{$regCliente->nome }} 
+    {{$regCliente->conta }}
+    @endforeach
+  </div>
   </div>
 </div>
  
