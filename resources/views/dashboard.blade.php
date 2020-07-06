@@ -1,46 +1,81 @@
- //existe a template? 
- @extends('template')
+@extends('layouts.app')
 
- @section('scripts')
+@section('scripts')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
  <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
+      google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+          ['Tempo', 'Clientes', ],
+          @foreach($clientes as $c)
+          [new Date({{ date( "Y,m,d",strtotime($c->data)) }}), {{ $c->quant }}],
+          @endforeach
         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-          }
+            title: 'Clientes',
+            subtitle: 'Cadastro de Clientes x tempo'
+          },
+          curveType: 'function',
+          legend: { position: 'bottom' }
         };
 
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+        var chart = new google.visualization.LineChart(document.getElementById('graficoClientes'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        chart.draw(data, options);
+
+      }
+    </script>
+
+    <!-- Empresas -->
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tempo', 'Empresas', ],
+          @foreach($empresas as $e)
+          [new Date({{ date( "Y,m,d",strtotime($e->data)) }}), {{ $e->quant }}],
+          @endforeach
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Empresas',
+            subtitle: 'Cadastro de Empresas x tempo'
+          },
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('graficoEmpresas'));
+
+        chart.draw(data, options);
+
       }
     </script>
 
  @endsection
 
- @section('conteudo')
- //A partir daqui vai aparecer o dashboard utizando o Google Charts
+ @section('content')
 
- 	<div class="row">
- 		<div class="col-md6" id="columnchart_material">
+ <div class="container">
 
- 		</div>
- 		<div class="col-md6">
- 			</div>
- 		
- 		</div>
- 
+  <div class="col">
+    <h1>Dashboard</h1>
+  </div>
+  
+  <div class="row">
+
+    <div class="col-md-6" id="graficoClientes"></div>
+      
+    <div class="col-md-6" id="graficoEmpresas"></div>
+
+  </div>
+</div>
  
  @endsection

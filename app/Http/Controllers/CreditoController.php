@@ -13,6 +13,7 @@ class CreditoController extends Controller
     {
         // Verifica se o usuário é Admin
         if (Auth::user()->Admin()) {
+
             // Obtem todos clientes e armazena na variável
             $clientes =  Cliente::all();
 
@@ -23,11 +24,15 @@ class CreditoController extends Controller
             foreach ($clientes as $cliente){
                 $arrayClientes[$cliente->id] = $cliente->nome;
             }
+
             // Retorna para a interface de cadastro de Crédito
-            return view('cad_credito', ['clientes' => $arrayClientes] );
+            return view('cad_credito', ['clientes' => $arrayClientes]);
+
         }else{
+
             // Caso não tenha permissões, retorna para a home 
             return view('home', [ 'msg' => [false, 'msg'=>'Você não possui permissões suficientes']]);
+            
         }
         
     }
