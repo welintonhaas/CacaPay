@@ -78,8 +78,7 @@
          @foreach($todosClientes as $regCliente)
          {{$regCliente->nome }} 
          {{$regCliente->conta }} <br>
-         @endforeach
-         <a href="#">Listar Todos Clientes</a>
+         @endforeach         
       </div>
       <div class="col-md-6">
          <h2> Ultimas 5 Empresas Cadastradas</h2>
@@ -87,8 +86,6 @@
          {{$regEmpresas->razaoSocial }} 
          {{$regEmpresas->CNPJ }} <br>
          @endforeach
-          <a href="#">Listar Todas as Empresas</a>
-
       </div>
    </div>
 </div>
