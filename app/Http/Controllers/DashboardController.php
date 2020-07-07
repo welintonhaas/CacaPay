@@ -21,8 +21,10 @@ class dashboardController extends Controller{
 			// Obtem as empresas
 			$empresas = Empresa::selectRaw('created_at as data, count(created_at) as quant')->groupByRaw('DAY(created_at)')->get();;
 
+			$todasEmpresas = Empresa::latest('id')->get()->take(5);
+
 			// retorna os dados para view
-			return view('dashboard', ['clientes' => $clientes, 'empresas' => $empresas, 'todosClientes' => $todosClientes]);
+			return view('dashboard', ['clientes' => $clientes, 'empresas' => $empresas, 'todosClientes' => $todosClientes,'todasEmpresas' => $todasEmpresas]);
 		}
 
 	}
