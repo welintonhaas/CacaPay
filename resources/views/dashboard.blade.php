@@ -15,7 +15,7 @@
    
      var options = {
        chart: {
-         title: 'Clientes',
+         title: 'Cadastro de Clientes x tempo',
          subtitle: 'Cadastro de Clientes x tempo'
        },
        legend: { position: 'bottom' }
@@ -28,6 +28,7 @@
    }
 </script>
 <!-- Transacao -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
    google.charts.load('current', {'packages':['corechart']});
    google.charts.setOnLoadCallback(drawChart);
@@ -35,15 +36,15 @@
    function drawChart() {
      var data = google.visualization.arrayToDataTable([
        ['Tempo', 'Transacao', ],
-       @foreach($transacao as $e)
-       [new Date({{ date( "Y,m,d",strtotime($e->data)) }}), {{ $e->quant }}],
+       @foreach($transacao as $t)
+       [new Date({{ date( "Y,m,d",strtotime($t->data)) }}), {{ $t->quant }}],
        @endforeach
      ]);
    
      var options = {
        chart: {
-         title: 'Transação',
-         subtitle: 'Cadastro de Transação x tempo'
+         title: 'Cadastro de Transação x tempo',
+         subtitle: ''
        },
        curveType: 'function',
        legend: { position: 'bottom' }
@@ -55,7 +56,8 @@
    
    }
 </script>
-<!-- Empresas -->
+<!-- Total de Transações -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
    google.charts.load('current', {'packages':['corechart']});
    google.charts.setOnLoadCallback(drawChart);
@@ -63,8 +65,8 @@
    function drawChart() {
      var data = google.visualization.arrayToDataTable([
        ['Tempo', 'Empresas', ],
-       @foreach($totalTransacao as $e)
-       [new Date({{ date( "Y,m,d",strtotime($e->data)) }}), {{ $e->valor }}],
+       @foreach($totalTransacao as $tt)
+       [new Date({{ date( "Y,m,d",strtotime($tt->data)) }}), {{ $tt->valor }}],
        @endforeach
      ]);
    

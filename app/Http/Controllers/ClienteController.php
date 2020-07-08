@@ -69,6 +69,20 @@ class ClienteController extends Controller
             abort(406);
         }
 
+        // Cria o cadastra o usuário no banco com os dados
+        $user = new User;
+        $user->password = isset($dados['senha']) ? Hash::make($dados['senha']) : Hash::make('123456') ;
+        $user->idCliente = $cliente->id;
+        $user->email = isset($dados['email']) ? $dados['email'] : $dados['cpf'].'@cacapay.com';
+        $user->name = isset($dados['nome']) ? $dados['nome'] : 'Cadastro Automático';
+
+        // Cadastra o usuário, caso não consiga retorna erro de conteúdo informado incorret
+        try {
+            $user->save();
+        }catch ( Exception $e){
+            abort(406);
+        }
+
         // Retorna o cliente criado 
         return $cliente;
         
