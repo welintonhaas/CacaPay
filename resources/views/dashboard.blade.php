@@ -18,11 +18,38 @@
          title: 'Clientes',
          subtitle: 'Cadastro de Clientes x tempo'
        },
+       legend: { position: 'bottom' }
+     };
+   
+     var chart = new google.visualization.AreaChart(document.getElementById('graficoClientes'));
+   
+     chart.draw(data, options);
+   
+   }
+</script>
+<!-- Transacao -->
+<script type="text/javascript">
+   google.charts.load('current', {'packages':['corechart']});
+   google.charts.setOnLoadCallback(drawChart);
+   
+   function drawChart() {
+     var data = google.visualization.arrayToDataTable([
+       ['Tempo', 'Transacao', ],
+       @foreach($transacao as $e)
+       [new Date({{ date( "Y,m,d",strtotime($e->data)) }}), {{ $e->quant }}],
+       @endforeach
+     ]);
+   
+     var options = {
+       chart: {
+         title: 'Transação',
+         subtitle: 'Cadastro de Transação x tempo'
+       },
        curveType: 'function',
        legend: { position: 'bottom' }
      };
    
-     var chart = new google.visualization.LineChart(document.getElementById('graficoClientes'));
+     var chart = new google.visualization.AreaChart(document.getElementById('graficoTransacao'));
    
      chart.draw(data, options);
    
@@ -36,21 +63,20 @@
    function drawChart() {
      var data = google.visualization.arrayToDataTable([
        ['Tempo', 'Empresas', ],
-       @foreach($empresas as $e)
-       [new Date({{ date( "Y,m,d",strtotime($e->data)) }}), {{ $e->quant }}],
+       @foreach($totalTransacao as $e)
+       [new Date({{ date( "Y,m,d",strtotime($e->data)) }}), {{ $e->valor }}],
        @endforeach
      ]);
    
      var options = {
        chart: {
-         title: 'Empresas',
-         subtitle: 'Cadastro de Empresas x tempo'
+         title: 'Total de Transações',
        },
        curveType: 'function',
        legend: { position: 'bottom' }
      };
    
-     var chart = new google.visualization.LineChart(document.getElementById('graficoEmpresas'));
+     var chart = new google.visualization.AreaChart(document.getElementById('graficoEmpresas'));
    
      chart.draw(data, options);
    
@@ -59,33 +85,66 @@
 @endsection
 @section('content')
 <div class="container">
-   <div class="col">
-      <h1>Dashboard</h1>
-   </div>
    <div class="row">
-      <div class="col-md-6">
-         <h2>Cadastro de Clientes</h2>
+      <div class="col-md-12">
+         <h1>Dashboard</h1>   
+      </div>
+   </div>
+   <div class="row mt-4">
+      <div class="col-md-4">
+   
          <div id="graficoClientes"></div>
       </div>
-      <div class="col-md-6">
-         <h2>Cadastro de Empresas</h2>
+      <div class="col-md-4">
+
+         <div id="graficoTransacao"></div>
+      </div>
+      <div class="col-md-4">
+
          <div id="graficoEmpresas"></div>
       </div>
    </div>
-   <div class="row">
+
+   <div class="row mt-5">
       <div class="col-md-6">
-         <h2>Ultimos 5 Clientes Cadastrados</h2>
-         @foreach($todosClientes as $regCliente)
-         {{$regCliente->nome }} 
-         {{$regCliente->conta }} <br>
-         @endforeach         
+         <h3>Últimos 5 Clientes Cadastrados</h3>
+         <table class="table table-striped">
+            <thead class="thead-dark">
+               <tr>
+                  <td scope="col">Nome</td>
+                  <td scope="col">Conta</td>
+               </tr>
+            </thead>
+            <tbody>
+               @foreach($todosClientes as $regCliente)
+               <tr>
+                  <td >{{ $regCliente->nome }} </td>
+                  <td>{{ $regCliente->conta }} </td>
+               </tr>
+               @endforeach       
+            </tbody>  
+         </table>
       </div>
       <div class="col-md-6">
-         <h2> Ultimas 5 Empresas Cadastradas</h2>
-         @foreach($todasEmpresas as $regEmpresas)
-         {{$regEmpresas->razaoSocial }} 
-         {{$regEmpresas->CNPJ }} <br>
-         @endforeach
+         <h3>Últimas 5 Transações</h3>
+         <table class="table table-striped">
+            <thead class="thead-dark">
+               <tr>
+                  <td scope="col">Empresa</td>
+                  <td scope="col">CNPJ</td>
+                  <td scope="col">Valor da transação</td>
+               </tr>
+            </thead>
+            <tbody>
+               @foreach($todasTransacao as $regTransacao)
+               <tr>
+                  <td >{{ $regTransacao->cliente->nome }} </td>
+                  <td >{{ $regTransacao->empresa->razaoSocial }} </td>
+                  <td>R$ {{ number_format($regTransacao->valor,2,',','') }}</td>
+               </tr>
+               @endforeach          
+            </tbody>  
+         </table>
       </div>
    </div>
 </div>
