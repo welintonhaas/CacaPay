@@ -7,7 +7,7 @@
    
    function drawChart() {
      var data = google.visualization.arrayToDataTable([
-       ['Tempo', 'Clientes', ],
+       ['Tempo', 'Cadastro de Clientes x tempo', ],
        @foreach($clientes as $c)
        [new Date({{ date( "Y,m,d",strtotime($c->data)) }}), {{ $c->quant }}],
        @endforeach
@@ -35,7 +35,7 @@
    
    function drawChart() {
      var data = google.visualization.arrayToDataTable([
-       ['Tempo', 'Transacao', ],
+       ['Tempo', 'Cadastro de Transação x tempo' ],
        @foreach($transacao as $t)
        [new Date({{ date( "Y,m,d",strtotime($t->data)) }}), {{ $t->quant }}],
        @endforeach
@@ -64,7 +64,7 @@
    
    function drawChart() {
      var data = google.visualization.arrayToDataTable([
-       ['Tempo', 'Empresas', ],
+       ['Tempo', 'Valor das Transações x tempo' ],
        @foreach($totalTransacao as $tt)
        [new Date({{ date( "Y,m,d",strtotime($tt->data)) }}), {{ $tt->valor }}],
        @endforeach
@@ -150,4 +150,8 @@
       </div>
    </div>
 </div>
+
+@foreach($totalTransacao as $tt)
+data  = {{ date( "Y,m,d",strtotime($tt->data)) }} 
+@endforeach
 @endsection
