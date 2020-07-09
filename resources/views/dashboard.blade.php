@@ -9,7 +9,7 @@
      var data = google.visualization.arrayToDataTable([
        ['Tempo', 'Cadastro de Clientes x tempo', ],
        @foreach($clientes as $c)
-       [new Date({{ date( "Y,m,d",strtotime($c->data)) }}), {{ $c->quant }}],
+       ['{{ $c->data }}', {{ $c->quant }}],
        @endforeach
      ]);
    
@@ -37,7 +37,7 @@
      var data = google.visualization.arrayToDataTable([
        ['Tempo', 'Cadastro de Transação x tempo' ],
        @foreach($transacao as $t)
-       [new Date({{ date( "Y,m,d",strtotime($t->data)) }}), {{ $t->quant }}],
+       ['{{ $t->data }}', {{ $t->quant }}],
        @endforeach
      ]);
    
@@ -66,7 +66,7 @@
      var data = google.visualization.arrayToDataTable([
        ['Tempo', 'Valor das Transações x tempo' ],
        @foreach($totalTransacao as $tt)
-       [new Date({{ date( "Y,m,d",strtotime($tt->data)) }}), {{ $tt->valor }}],
+       ['{{ $tt->data }}', {{ $tt->valor }}],
        @endforeach
      ]);
    
