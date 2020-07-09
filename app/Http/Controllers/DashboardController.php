@@ -15,17 +15,17 @@ class dashboardController extends Controller{
 		if (Auth::user()->Admin()) {
 
 			// Obtem os clientes	
-			$clientes = Cliente::selectRaw('DATE(created_at) as data, count(*) as quant')->groupByRaw('DAY(created_at)')->get();
+			$clientes = Cliente::selectRaw('DATE(created_at) as data, count(*) as quant')->groupByRaw('DAY(created_at)')->orderBy('created_at')->get();
 			$todosClientes = Cliente::latest('id')->get()->take(5);
 
 			// Obtem as empresas
-			$empresas = Empresa::selectRaw('DATE(created_at) as data, count(created_at) as quant')->groupByRaw('DAY(created_at)')->get();;
+			$empresas = Empresa::selectRaw('DATE(created_at) as data, count(created_at) as quant')->groupByRaw('DAY(created_at)')->orderBy('created_at')->get();;
 			$todasEmpresas = Empresa::latest('id')->get()->take(5);
 
 			// Obtem Transações
-			$transacao = Transacoes::selectRaw('DATE(data) as data, count(*) as quant')->groupByRaw('DAY(data)')->get();
+			$transacao = Transacoes::selectRaw('DATE(data) as data, count(*) as quant')->groupByRaw('DAY(data)')->orderBy('data')->get();
 			$todasTransacao = Transacoes::latest('id')->get()->take(5);
-			$totalTransacao = Transacoes::selectRaw('data, sum(valor) as valor')->groupByRaw('DAY(data)')->get();
+			$totalTransacao = Transacoes::selectRaw('data, sum(valor) as valor')->groupByRaw('DAY(data)')->orderBy('data')->get();
 
 			// retorna os dados para view
 			return view('dashboard', [	'clientes' => $clientes, 
